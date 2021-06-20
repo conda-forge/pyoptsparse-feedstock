@@ -53,7 +53,7 @@ test:
     - setuptools
 
   commands:
-    - testflo --verbose -n 1 .
+    - testflo --verbose -n 1 --nompi .
     - pip check
 
 about:
