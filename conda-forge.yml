@@ -6,4 +6,8 @@ build_platform:
   osx_arm64: osx_64
 test_on_native_only: true
 azure:
-  store_build_artifacts: True
+  settings_win:
+    variables:
+      SET_PAGEFILE: "True"
+provider:
+  win: azure
