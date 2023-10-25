@@ -13,8 +13,9 @@ build:
   number: 0
   skip: true  # [python_impl == 'pypy']
   skip: true  # [win and vc<14]
-
-
+  entry_points:
+    - optview=pyoptsparse.postprocessing.OptView:main
+    - optview_dash=pyoptsparse.postprocessing.OptView_dash:main
 
 requirements:
   build:
@@ -59,6 +60,10 @@ test:
   commands:
     - testflo -n 1 --verbose .
     - pip check
+    - test -f ${PREFIX}/bin/optview
+    - test -f ${PREFIX}/bin/optview_dash
+    - grep -L _build_env ${PREFIX}/bin/optview  # [unix]
+    - grep -L _build_env ${PREFIX}/bin/optview_dash  # [unix]
 
 about:
   home: https://mdolab-pyoptsparse.readthedocs-hosted.com/
