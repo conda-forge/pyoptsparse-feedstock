@@ -57,6 +57,7 @@ test:
     - parameterized
     - setuptools
     - tk
+    - matplotlib
 
   commands:
     - testflo -n 1 --verbose .
