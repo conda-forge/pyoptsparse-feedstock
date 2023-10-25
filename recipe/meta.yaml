@@ -56,13 +56,14 @@ test:
     - testflo
     - parameterized
     - setuptools
-    - tk
-    - matplotlib
 
   commands:
     - testflo -n 1 --verbose .
     - pip check
-    - optview --help
+    - test -f ${PREFIX}/bin/optview
+    - test -f ${PREFIX}/bin/optview_dash
+    - grep -L _build_env ${PREFIX}/bin/optview  # [unix]
+    - grep -L _build_env ${PREFIX}/bin/optview_dash  # [unix]
 
 about:
   home: https://mdolab-pyoptsparse.readthedocs-hosted.com/
