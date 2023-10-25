@@ -24,6 +24,8 @@ python_impl:
 - cpython
 target_platform:
 - win-64
+tk:
+- '8.6'
 vc:
 - '14'
 zip_keys:
