@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/mdolab/pyoptsparse/archive/refs/tags/v{{ version }}.tar.gz
   sha256: f309e3e2945d34439e8f994bb5f0e5ea1415d202ec34f958db474e4d9fbd173a
+  patches:
+    - skip-test-macOS.patch
 
 build:
   number: 0
