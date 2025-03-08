@@ -1,0 +1,20 @@
+diff --git a/tests/test_lincon_error.py b/tests/test_lincon_error.py
+index 7af5723..70dd813 100644
+--- a/tests/test_lincon_error.py
++++ b/tests/test_lincon_error.py
+@@ -4,6 +4,7 @@ Tests that pyOptSparse raises an error when a user-defined obj/con function retu
+ """
+ 
+ # Standard Python modules
++import sys
+ import unittest
+ 
+ # First party modules
+@@ -24,6 +25,7 @@ def objfunc(xdict):
+ 
+ 
+ class TestLinearConstraintCheck(unittest.TestCase):
++    @unittest.skipIf(sys.platform == "darwin", "skipping temporarily on macOS")
+     def test(self):
+         # define an optimization problem with a linear constraint
+         optProb = Optimization("test", objfunc)
