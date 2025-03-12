@@ -1,5 +1,5 @@
 diff --git a/tests/test_hs071.py b/tests/test_hs071.py
-index f6ccb5b..cb54450 100644
+index f6ccb5b..7d1e2ad 100644
 --- a/tests/test_hs071.py
 +++ b/tests/test_hs071.py
 @@ -1,6 +1,7 @@
@@ -15,12 +15,12 @@ index f6ccb5b..cb54450 100644
      def test_optimization(self, optName):
          self.optName = optName
 +        if optName == "IPOPT" and sys.platform in ["win32", "cygwin"]:
-+            raise unittest.skipTest("Skipping IPOPT on Windows")
++            self.skipTest("Skipping IPOPT on Windows")
          self.setup_optProb()
          optOptions = self.optOptions.pop(optName, None)
          sol = self.optimize(optOptions=optOptions)
 diff --git a/tests/test_large_sparse.py b/tests/test_large_sparse.py
-index 5f88088..3fdca3d 100644
+index 5f88088..f13d8e3 100644
 --- a/tests/test_large_sparse.py
 +++ b/tests/test_large_sparse.py
 @@ -7,6 +7,7 @@ Only testing with SNOPT, which supports sparse formats.
@@ -36,7 +36,7 @@ index 5f88088..3fdca3d 100644
      def test_opt(self, optName, sparse):
          self.optName = optName
 +        if optName == "IPOPT" and sys.platform in ["win32", "cygwin"]:
-+            raise unittest.skipTest("Skipping IPOPT on Windows")
++            self.skipTest("Skipping IPOPT on Windows")
          self.setup_optProb(sparse=sparse)
          sol = self.optimize()
          self.assert_solution_allclose(sol, 1e-5, partial_x=True)
