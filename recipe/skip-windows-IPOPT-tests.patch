@@ -1,5 +1,5 @@
 diff --git a/tests/test_hs071.py b/tests/test_hs071.py
-index f6ccb5b..67559e0 100644
+index f6ccb5b..cb54450 100644
 --- a/tests/test_hs071.py
 +++ b/tests/test_hs071.py
 @@ -1,6 +1,7 @@
@@ -10,17 +10,17 @@ index f6ccb5b..67559e0 100644
  import unittest
  
  # External modules
-@@ -205,6 +206,8 @@ class TestHS71(OptTest):
- 
+@@ -206,6 +207,8 @@ class TestHS71(OptTest):
      @parameterized.expand(["SNOPT", "IPOPT", "SLSQP", "PSQP", "CONMIN", "NLPQLP", "ParOpt"])
      def test_optimization(self, optName):
+         self.optName = optName
 +        if optName == "IPOPT" and sys.platform in ["win32", "cygwin"]:
 +            raise unittest.skipTest("Skipping IPOPT on Windows")
-         self.optName = optName
          self.setup_optProb()
          optOptions = self.optOptions.pop(optName, None)
+         sol = self.optimize(optOptions=optOptions)
 diff --git a/tests/test_large_sparse.py b/tests/test_large_sparse.py
-index 5f88088..6d7483d 100644
+index 5f88088..3fdca3d 100644
 --- a/tests/test_large_sparse.py
 +++ b/tests/test_large_sparse.py
 @@ -7,6 +7,7 @@ Only testing with SNOPT, which supports sparse formats.
@@ -31,12 +31,12 @@ index 5f88088..6d7483d 100644
  import unittest
  
  # External modules
-@@ -112,6 +113,8 @@ class TestLarge(OptTest):
-         ]
+@@ -113,6 +114,8 @@ class TestLarge(OptTest):
      )
      def test_opt(self, optName, sparse):
+         self.optName = optName
 +        if optName == "IPOPT" and sys.platform in ["win32", "cygwin"]:
 +            raise unittest.skipTest("Skipping IPOPT on Windows")
-         self.optName = optName
          self.setup_optProb(sparse=sparse)
          sol = self.optimize()
+         self.assert_solution_allclose(sol, 1e-5, partial_x=True)
