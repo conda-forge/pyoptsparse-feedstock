@@ -5,7 +5,6 @@ set -eox pipefail
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$PREFIX/lib/pkgconfig:$BUILD_PREFIX/lib/pkgconfig
 
 EXTRA_FLAGS=""
-NP_INC="${SP_DIR}/numpy/core/include/"
 echo "PYTHON TARGET=${PYTHON}"
 
 if [[ $CONDA_BUILD_CROSS_COMPILATION == "1" ]]; then
@@ -15,7 +14,6 @@ if [[ $CONDA_BUILD_CROSS_COMPILATION == "1" ]]; then
   # echo "pkg-config = '$(which pkg-config)'" >> "$BUILD_PREFIX"/meson_cross_file.txt
   # Use Meson cross-file flag to enable cross compilation
   EXTRA_FLAGS="--cross-file $BUILD_PREFIX/meson_cross_file.txt"
-  NP_INC=""
 fi
 
 # This is done on two lines so that the command will return failure info if it fails
@@ -27,7 +25,7 @@ cd "${SRC_DIR}"
 
 # MESON_ARGS is used within setup.py to pass extra arguments to meson
 # We need these so that dependencies on the build machine are not incorrectly used by meson when building for a different target
-export MESON_ARGS="-Dipopt_dir=${PREFIX} -Dincdir_numpy=${NP_INC} -Dpython_target=${PYTHON} ${EXTRA_FLAGS}"
+export MESON_ARGS="-Dipopt_dir=${PREFIX} -Dpython_target=${PYTHON} ${EXTRA_FLAGS}"
 
 # We use this instead of pip install . because the way meson builds from within a conda-build process puts the build
 # artifacts where pip install . can't find them. Here we explicitly build the wheel into the working director, wherever that is

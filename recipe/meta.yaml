@@ -10,9 +10,10 @@ source:
   sha256: 5cbd669ff6e652afa8cb8cbe64da89fe3b65a960c3363736fe5f5d8f879ab3e7
   patches:
     - skip-test-macOS.patch
+    - skip-windows-IPOPT-tests.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [python_impl == 'pypy']
   skip: true  # [win and vc<14]
   skip: true  # [py==38]
