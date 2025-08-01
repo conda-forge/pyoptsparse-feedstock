@@ -25,7 +25,7 @@ cd "${SRC_DIR}"
 
 # MESON_ARGS is used within setup.py to pass extra arguments to meson
 # We need these so that dependencies on the build machine are not incorrectly used by meson when building for a different target
-export MESON_ARGS="-Dipopt_dir=${PREFIX} -Dpython_target=${PYTHON} ${EXTRA_FLAGS}"
+export MESON_ARGS="-Dpython_target=${PYTHON} ${EXTRA_FLAGS}"
 
 # We use this instead of pip install . because the way meson builds from within a conda-build process puts the build
 # artifacts where pip install . can't find them. Here we explicitly build the wheel into the working director, wherever that is

@@ -36,7 +36,7 @@ requirements:
   host:
     - python
     - numpy
-    - ipopt
+    - cyipopt
     - libpgmath                               # [win]
 
   run:
