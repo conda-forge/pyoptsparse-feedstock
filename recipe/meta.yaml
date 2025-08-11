@@ -10,7 +10,6 @@ source:
   sha256: 74190d34830a4e02bd7905151dbe71cd3c1ad7601ab236ce4a2405c5c6bef9e0
   patches:
     - skip-test-macOS.patch
-    - skip-windows-IPOPT-tests.patch
 
 build:
   number: 0
