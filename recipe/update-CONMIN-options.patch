@@ -1,0 +1,15 @@
+diff --git a/tests/test_sphere.py b/tests/test_sphere.py
+index b1b5e29..9c67e76 100644
+--- a/tests/test_sphere.py
++++ b/tests/test_sphere.py
+@@ -60,6 +60,10 @@ class TestSphere(OptTest):
+         "SNOPT": {
+             "Major iterations limit": 10,
+         },
++        "CONMIN": {
++            "DELFUN": 1e-10,
++            "DABFUN": 1e-10,
++        },
+     }
+ 
+     def objfunc(self, xdict):
