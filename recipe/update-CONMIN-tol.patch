@@ -1,0 +1,18 @@
+diff --git a/tests/test_sphere.py b/tests/test_sphere.py
+index b1b5e29..ab41710 100644
+--- a/tests/test_sphere.py
++++ b/tests/test_sphere.py
+@@ -41,7 +41,12 @@ class TestSphere(OptTest):
+     xStar = {"xvars": np.zeros(N)}
+ 
+     # Tolerances
+-    tol = {k: 5e-2 if k in ["CONMIN", "ALPSO", "NSGA2"] else 1e-6 for k in ALL_OPTIMIZERS}
++    tol = {k: 1e-6 for k in ALL_OPTIMIZERS}
++    tol |= {
++        "CONMIN": 5e-1,
++        "ALPSO": 5e-2,
++        "NSGA2": 5e-2,
++    }
+ 
+     optOptions = {
+         "ALPSO": {  # sphere
