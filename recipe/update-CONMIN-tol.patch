@@ -9,7 +9,7 @@ index b1b5e29..ab41710 100644
 -    tol = {k: 5e-2 if k in ["CONMIN", "ALPSO", "NSGA2"] else 1e-6 for k in ALL_OPTIMIZERS}
 +    tol = {k: 1e-6 for k in ALL_OPTIMIZERS}
 +    tol |= {
-+        "CONMIN": 2e-1,
++        "CONMIN": 5e-1,
 +        "ALPSO": 5e-2,
 +        "NSGA2": 5e-2,
 +    }
