@@ -1,5 +1,5 @@
 {% set name = "pyoptsparse" %}
-{% set version = "2.14.1" %}
+{% set version = "2.14.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/mdolab/pyoptsparse/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: b9d0ad3e2cb8816f5f4aea3f05074e6b598c040b8a9c023a887f409dde264f67
+  sha256: 5317eb1323455d88872bd5638055c231298e04da6b1c66dd847c6af70f392791
   patches:
     - skip-test-macOS.patch
     - skip-second-NSGA2-test.patch
