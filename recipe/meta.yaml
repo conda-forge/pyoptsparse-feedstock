@@ -39,7 +39,6 @@ requirements:
   host:
     - python
     - numpy
-    - cyipopt
     - libpgmath                               # [win]
 
   run:
@@ -61,6 +60,7 @@ test:
     - testflo
     - parameterized
     - setuptools
+    - cyipopt
 
   commands:
     - testflo -n 1 --pre_announce --verbose .
