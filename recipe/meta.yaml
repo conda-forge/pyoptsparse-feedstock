@@ -14,7 +14,7 @@ source:
     - update-CONMIN-tol.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [python_impl == 'pypy']
   skip: true  # [win and vc<14]
   skip: true  # [py==38]
@@ -30,7 +30,7 @@ requirements:
     - setuptools
     - ninja
     - numpy
-    - meson >=1.3.2,<1.10.0
+    - meson >=1.3.2
     - python-build
     - pip
     - swig
