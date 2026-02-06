@@ -30,6 +30,7 @@ requirements:
     - setuptools
     - python-build
     - pip
+    - meson-python
 
   host:
     - python
