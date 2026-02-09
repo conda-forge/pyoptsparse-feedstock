@@ -24,8 +24,9 @@ requirements:
     - python
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
     - numpy {{ numpy }}                       # [build_platform != target_platform]
-    - meson-python                            # [build_platform != target_platform]
-    - ninja                                   # [build_platform != target_platform]
+    - meson-python
+    - ninja
+    - swig
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
