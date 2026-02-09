@@ -9,4 +9,4 @@ fi
 
 cd "${SRC_DIR}"
 
-pip install .
+$PYTHON -m pip install .
