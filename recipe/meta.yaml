@@ -27,15 +27,16 @@ requirements:
     - {{ compiler('fortran') }}
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
     - python
-    - setuptools
     - python-build
-    - pip
-    - meson-python
 
   host:
     - python
     - numpy
     - libpgmath                               # [win]
+    - meson-python
+    - ninja
+    - numpy {{ numpy }}
+    - pip
 
   run:
     - python
