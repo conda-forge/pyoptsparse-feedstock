@@ -9,5 +9,4 @@ fi
 
 cd "${SRC_DIR}"
 
-$PYTHON -m build -n -x .
-pip install --prefix "${PREFIX}" --no-deps --no-index --find-links dist pyoptsparse
+pip install .
