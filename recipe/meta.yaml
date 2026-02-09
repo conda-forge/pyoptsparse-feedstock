@@ -23,7 +23,6 @@ requirements:
     - python
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
     - numpy {{ numpy }}                       # [build_platform != target_platform]
-    - meson-python
     - ninja
     - swig
     - {{ compiler('c') }}
@@ -33,13 +32,12 @@ requirements:
 
   host:
     - python
+    - python-build
+    - pip
     - meson-python
     - ninja
-    - python-build
-    - numpy
     - libpgmath                               # [win]
     - numpy {{ numpy }}
-    - pip
 
   run:
     - python
