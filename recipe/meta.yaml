@@ -40,7 +40,6 @@ requirements:
     - numpy
     - libpgmath                               # [win]
     - numpy {{ numpy }}
-    - pip
 
   run:
     - python
