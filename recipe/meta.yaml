@@ -27,6 +27,7 @@ requirements:
     - meson-python
     - ninja
     - swig
+    - pip
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
