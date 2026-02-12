@@ -14,9 +14,8 @@ source:
     - update-CONMIN-tol.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [python_impl == 'pypy']
-  skip: true  # [win]
 
 requirements:
   build:
