@@ -1,12 +1,15 @@
-{% set name = "pyoptsparse" %}
-{% set version = "2.15.1" %}
+schema_version: 1
+
+context:
+  name: pyoptsparse
+  version: "2.15.1"
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://github.com/mdolab/pyoptsparse/archive/refs/tags/{{ version }}.tar.gz
+  url: https://github.com/mdolab/pyoptsparse/archive/refs/tags/${{ version }}.tar.gz
   sha256: 15488cf8dd9b425da0f0beebdf7d4d6a2d49e1128a19b9742fa4ab659b234d28
   patches:
     - skip-test-macOS.patch
@@ -15,19 +18,23 @@ source:
 
 build:
   number: 1
-  skip: true  # [win or py < 311]
+  skip:
+    - win
+    - match(python, "<3.11")
 
 requirements:
   build:
     - python
-    - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - numpy {{ numpy }}                       # [build_platform != target_platform]
+    - if: build_platform != target_platform
+      then:
+        - cross-python_${{ target_platform }}
+        - numpy ${{ numpy }}
     - ninja
     - swig
-    - {{ compiler('c') }}
-    - {{ stdlib("c") }}
-    - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+    - ${{ compiler('cxx') }}
+    - ${{ compiler('fortran') }}
 
   host:
     - python
@@ -35,8 +42,10 @@ requirements:
     - pip
     - meson-python
     - ninja
-    - libpgmath                               # [win]
-    - numpy {{ numpy }}
+    - if: win
+      then:
+        - libpgmath
+    - numpy ${{ numpy }}
 
   run:
     - python
@@ -46,28 +55,26 @@ requirements:
     - mdolab-baseclasses >=1.3.1
     - packaging
 
-test:
-  imports:
-    - pyoptsparse
-
-  source_files:
-    - tests
-
-  requires:
-    - pip
-    - testflo
-    - parameterized
-    - setuptools
-    - cyipopt
-
-  commands:
-    - testflo -n 1 --pre_announce --verbose .
-    - pip check
+tests:
+  - python:
+      imports:
+        - pyoptsparse
+      pip_check: true
+  - files:
+      source:
+        - tests
+    requirements:
+      run:
+        - pip
+        - testflo
+        - parameterized
+        - setuptools
+        - cyipopt
+    script:
+      - testflo -n 1 --pre_announce --verbose .
 
 about:
-  home: https://mdolab-pyoptsparse.readthedocs-hosted.com/
   license: LGPL-3.0-only
-  license_family: LGPL
   license_file: LICENSE
   summary: Package for formulating and solving nonlinear constrained optimization problems.
   description: |
@@ -79,8 +86,9 @@ about:
     ALPSO, CONMIN, IPOPT, NSGA2, PSQP, and SLSQP are supported.
 
 
-  doc_url: https://mdolab-pyoptsparse.readthedocs-hosted.com/
-  dev_url: https://github.com/mdolab/pyoptsparse
+  homepage: https://mdolab-pyoptsparse.readthedocs-hosted.com/
+  repository: https://github.com/mdolab/pyoptsparse
+  documentation: https://mdolab-pyoptsparse.readthedocs-hosted.com/
 
 extra:
   recipe-maintainers:
