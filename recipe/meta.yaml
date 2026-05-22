@@ -41,8 +41,9 @@ requirements:
 
   run:
     - python
+    - numpy >=1.25
+    - scipy >=1.11
     - sqlitedict >=1.6
-    - scipy >1.2
     - mdolab-baseclasses >=1.3.1
     - packaging
 
