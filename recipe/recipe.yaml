@@ -21,6 +21,10 @@ build:
   skip:
     - win
     - match(python, "<3.11")
+  python:
+    entry_points:
+      - optview = pyoptsparse.postprocessing.OptView:main
+      - optview_dash = pyoptsparse.postprocessing.OptView_dash:main
 
 requirements:
   build:
