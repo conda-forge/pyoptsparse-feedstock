@@ -20,7 +20,6 @@ the code to more efficiently handle large-scale optimization problems.
 Interfaces are provided for a number of optimizers -- for the conda package the optimizers
 ALPSO, CONMIN, IPOPT, NSGA2, PSQP, and SLSQP are supported.
 
-
 Current build status
 ====================
 
