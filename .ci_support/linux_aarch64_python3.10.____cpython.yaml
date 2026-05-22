@@ -30,6 +30,8 @@ python:
 - 3.10.* *_cpython
 python_impl:
 - cpython
+python_min:
+- '3.11'
 target_platform:
 - linux-aarch64
 zip_keys:
