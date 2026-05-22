@@ -41,7 +41,7 @@ requirements:
     - numpy {{ numpy }}
 
   run:
-    - python >={{ python_min }}
+    - python
     - numpy >=1.25
     - scipy >=1.11
     - sqlitedict >=1.6
