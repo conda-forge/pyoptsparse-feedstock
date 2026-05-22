@@ -15,9 +15,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [python_impl == 'pypy']
-  skip: true  # [win]
-  skip: true  # [py < 311]
+  skip: true  # [python_impl == 'pypy' or win or py < 311]
 
 requirements:
   build:
