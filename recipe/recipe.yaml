@@ -70,8 +70,12 @@ tests:
         - dash
         - plotly
     script:
-      - python -c "import shutil; assert shutil.which('optview'), 'optview not on PATH'"
-      - python -c "import shutil; assert shutil.which('optview_dash'), 'optview_dash not on PATH'"
+      - python -c "from pyoptsparse.postprocessing.OptView import main"
+      - python -c "from pyoptsparse.postprocessing.OptView_dash import main"
+      - test -f ${PREFIX}/bin/optview
+      - test -f ${PREFIX}/bin/optview_dash
+      - grep -L _build_env ${PREFIX}/bin/optview
+      - grep -L _build_env ${PREFIX}/bin/optview_dash
   - files:
       source:
         - tests
