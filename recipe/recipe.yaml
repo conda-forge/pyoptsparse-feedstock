@@ -64,6 +64,14 @@ tests:
       imports:
         - pyoptsparse
       pip_check: true
+  - requirements:
+      run:
+        - matplotlib
+        - dash
+        - plotly
+    script:
+      - python -c "import shutil; assert shutil.which('optview'), 'optview not on PATH'"
+      - python -c "import shutil; assert shutil.which('optview_dash'), 'optview_dash not on PATH'"
   - files:
       source:
         - tests
