@@ -17,9 +17,8 @@ source:
     - update-CONMIN-tol.patch
 
 build:
-  number: 3
+  number: 4
   skip:
-    - win
     - match(python, "<3.11")
   python:
     entry_points:
@@ -46,9 +45,6 @@ requirements:
     - pip
     - meson-python
     - ninja
-    - if: win
-      then:
-        - libpgmath
     - numpy
 
   run:
