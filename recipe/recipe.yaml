@@ -17,10 +17,14 @@ source:
     - update-CONMIN-tol.patch
 
 build:
-  number: 2
+  number: 3
   skip:
     - win
     - match(python, "<3.11")
+  python:
+    entry_points:
+      - optview = pyoptsparse.postprocessing.OptView:main
+      - optview_dash = pyoptsparse.postprocessing.OptView_dash:main
 
 requirements:
   build:
