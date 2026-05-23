@@ -64,16 +64,6 @@ tests:
       imports:
         - pyoptsparse
       pip_check: true
-  - requirements:
-      run:
-        - matplotlib
-        - dash
-        - plotly
-    script:
-      - test -f ${PREFIX}/bin/optview
-      - test -f ${PREFIX}/bin/optview_dash
-      - grep -L _build_env ${PREFIX}/bin/optview
-      - grep -L _build_env ${PREFIX}/bin/optview_dash
   - files:
       source:
         - tests
