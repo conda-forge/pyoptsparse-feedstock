@@ -45,9 +45,6 @@ requirements:
     - pip
     - meson-python
     - ninja
-    - if: win
-      then:
-        - libpgmath
     - numpy
 
   run:
