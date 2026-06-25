@@ -2,22 +2,22 @@ schema_version: 1
 
 context:
   name: pyoptsparse
-  version: "2.15.1"
+  version: "2.16.0"
 
 package:
   name: ${{ name|lower }}
   version: ${{ version }}
 
 source:
-  url: https://github.com/mdolab/pyoptsparse/archive/refs/tags/${{ version }}.tar.gz
-  sha256: 15488cf8dd9b425da0f0beebdf7d4d6a2d49e1128a19b9742fa4ab659b234d28
+  url: https://github.com/mdolab/pyoptsparse/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: 1590f890892e34ccab9e0685e1c5dd57e23b82d1a780a20b570d8c08cf82ad96
   patches:
     - skip-test-macOS.patch
     - skip-second-NSGA2-test.patch
     - update-CONMIN-tol.patch
 
 build:
-  number: 4
+  number: 0
   skip:
     - match(python, "<3.11")
   python:
