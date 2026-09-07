@@ -38,6 +38,10 @@ requirements:
     - ${{ stdlib('c') }}
     - ${{ compiler('cxx') }}
     - ${{ compiler('fortran') }}
+    - if: win
+      then:
+        # provides clang-cl.exe, used to compile C/C++ on Windows (see build.bat)
+        - clang
 
   host:
     - python
