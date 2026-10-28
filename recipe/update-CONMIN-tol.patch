@@ -6,12 +6,13 @@ index b1b5e29..ab41710 100644
      xStar = {"xvars": np.zeros(N)}
  
      # Tolerances
--    tol = {k: 5e-2 if k in ["CONMIN", "ALPSO", "NSGA2"] else 1e-6 for k in ALL_OPTIMIZERS}
+-    tol = {k: 5e-2 if k in ["CONMIN", "ALPSO", "NSGA2", "Egor"] else 1e-6 for k in ALL_OPTIMIZERS}
 +    tol = {k: 1e-6 for k in ALL_OPTIMIZERS}
 +    tol |= {
 +        "CONMIN": 5e-1,
 +        "ALPSO": 5e-2,
 +        "NSGA2": 5e-2,
++        "Egor": 5e-2,
 +    }
  
      optOptions = {

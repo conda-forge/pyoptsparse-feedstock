@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pyoptsparse
-  version: "2.16.1"
+  version: "2.17.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,14 +10,14 @@ package:
 
 source:
   url: https://github.com/mdolab/pyoptsparse/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 9a38fb9e50f22f559137a74d3b1c8a6c19fedc82f181e579f7673ca43b4157c8
+  sha256: d6aedaacba9a0bd96de2c6e1081672e61d2ad69d8c7ee4aa8ab7659884ae4cb8
   patches:
     - skip-test-macOS.patch
     - skip-second-NSGA2-test.patch
     - update-CONMIN-tol.patch
 
 build:
-  number: 1
+  number: 0
   skip:
     - match(python, "<3.11")
   python:
@@ -50,6 +50,7 @@ requirements:
     - meson-python
     - ninja
     - numpy
+    - setuptools_scm >=8.2
 
   run:
     - python
@@ -64,6 +65,12 @@ tests:
       imports:
         - pyoptsparse
       pip_check: true
+  # check the version setuptools_scm derived from the source archive matches the recipe
+  - script:
+      - python -c "import pyoptsparse; from importlib.metadata import version; assert pyoptsparse.__version__ == version('pyoptsparse') == '${{ version }}', (pyoptsparse.__version__, version('pyoptsparse'))"
+    requirements:
+      run:
+        - python
   - files:
       source:
         - tests
