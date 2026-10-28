@@ -65,6 +65,12 @@ tests:
       imports:
         - pyoptsparse
       pip_check: true
+  # check the version setuptools_scm derived from the source archive matches the recipe
+  - script:
+      - python -c "import pyoptsparse; from importlib.metadata import version; assert pyoptsparse.__version__ == version('pyoptsparse') == '${{ version }}', (pyoptsparse.__version__, version('pyoptsparse'))"
+    requirements:
+      run:
+        - python
   - files:
       source:
         - tests
