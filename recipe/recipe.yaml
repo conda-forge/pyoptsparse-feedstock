@@ -34,7 +34,6 @@ requirements:
         - numpy
     - ninja
     - swig
-    - setuptools_scm >=8.2
     - ${{ compiler('c') }}
     - ${{ stdlib('c') }}
     - ${{ compiler('cxx') }}
@@ -51,6 +50,7 @@ requirements:
     - meson-python
     - ninja
     - numpy
+    - setuptools_scm >=8.2
 
   run:
     - python
