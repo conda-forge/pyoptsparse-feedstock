@@ -9,9 +9,6 @@ REM (following conda-forge/scipy-feedstock recipe/bld.bat).
 set "CC=clang-cl"
 set "CXX=clang-cl"
 
-REM adding environmental variable for setuptools_scm
-set SETUPTOOLS_SCM_PRETEND_VERSION=%PKG_VERSION%
-
 REM flang 21 ships its runtime as flang_rt.runtime.dynamic.lib in the compiler resource
 REM directory, which is not on the linker search path (libflang, which used to place it on
 REM LIB, was dropped after flang 20). meson links the Fortran extensions by invoking
