@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pyoptsparse
-  version: "2.17.1"
+  version: "2.17.2"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/mdolab/pyoptsparse/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 1da659783e201896394e0ff68413429b31306249dd599c1764b17af812221245
+  sha256: ca43a3fafac40da16c1141b47f04124d4f16418439a99c9674af3213ab5eb414
   patches:
     - skip-test-macOS.patch
     - skip-second-NSGA2-test.patch
